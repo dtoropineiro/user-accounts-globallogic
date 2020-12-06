@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "21cd4b2a-9fcc-40ba-bfba-c5198947dd6d",
+		"name": "GlobalLogic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan@rodrigusesz.org\",\r\n\"password\": \"aaaa1234AAAA\",\r\n\"phone\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"countrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Invalid email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan\",\r\n\"password\": \"aaaa1234AAAA\",\r\n\"phone\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"countrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Invalid password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan@rodrigusesz.org\",\r\n\"password\": \"asdf\",\r\n\"phone\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"countrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2VzYWQiLCJleHAiOjE2MDcyOTczNDEsImlhdCI6MTYwNzI3OTM0MX0.DIOIeI28iW_opeOGnLfBazxVWxwKDZpvnagsj-_kT_XxRsrSdwlbpTqs08mUa6FlOz0wUg3jpiW1eJIYsRgKeg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan@rodriguez.org\",\r\n\"password\": \"aaaa1234AAAA\",\r\n\"phones\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"countrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getuser/juan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getuser",
+						"juan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User 404",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2VzYWQiLCJleHAiOjE2MDcyOTc0MjcsImlhdCI6MTYwNzI3OTQyN30.iB0C1of_haYgRlAQ3cWwDvln1DxQdMciRrIvlq8f-0zF3Ff0GDvjuB6UIbNtzefo-b0-1sx5eH3jN7gpvO_alw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan@rodriguez.org\",\r\n\"password\": \"aaaa1234AAAA\",\r\n\"phones\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"countrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getuser/fakeuser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getuser",
+						"fakeuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User 401",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"Juan\",\r\n\"email\": \"juan@rodriguez.org\",\r\n\"password\": \"aaaa1234AAAA\",\r\n\"phones\": [\r\n    {\r\n    \"number\": \"1234567\",\r\n    \"citycode\": \"1\",\r\n    \"contrycode\": \"57\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getuser/juan",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getuser",
+						"juan"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
