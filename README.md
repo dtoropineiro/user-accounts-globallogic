@@ -11,4 +11,5 @@ Run the following command to compile and run the Spring Boot Application
 
 ./mvnw.cmd spring-boot:run
 
+Run creation of user request, and get request in postman collection named GlobalLogic.postman_collection.json
 
