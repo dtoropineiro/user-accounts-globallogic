@@ -4,6 +4,7 @@ import com.dario.useraccounts.exceptions.AttributeException;
 import com.dario.useraccounts.model.User;
 import com.dario.useraccounts.model.JwtResponse;
 import com.dario.useraccounts.repository.UserRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.dario.useraccounts.exceptions.EntityNotFoundException;
@@ -48,21 +49,26 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(User user) {
-        String email = user.getEmail();
-        if(getUserByEmail(email).isPresent()){
-            LOGGER.log(Level.WARNING, () -> EMAIL_ALREADY_USED + email);
+
+
+        try{
+            String email = user.getEmail();
+            boolean isEmailPresent = getUserByEmail(email).isPresent();
+            String uuid = UUID.randomUUID().toString();
+            Date created = new Date(System.currentTimeMillis());
+            user.setCreated(created);
+            user.setModified(created);
+            user.setLastLogin(created);
+            user.setToken(uuid);
+            user.setIsActive(true);
+            userRepository.save(user);
+            LOGGER.log(Level.INFO, USER_CREATE);
+            return user;
+        }
+        catch(DataIntegrityViolationException re) {
+            LOGGER.log(Level.WARNING, () -> EMAIL_ALREADY_USED);
             throw new AttributeException(EMAIL_ALREADY_USED);
         }
-        String uuid = UUID.randomUUID().toString();
-        Date created = new Date(System.currentTimeMillis());
-        user.setCreated(created);
-        user.setModified(created);
-        user.setLastLogin(created);
-        user.setToken(uuid);
-        user.setIsActive(true);
-        userRepository.save(user);
-        LOGGER.log(Level.INFO, USER_CREATE);
-        return user;
     }
 
     @Override
